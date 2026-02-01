@@ -1,0 +1,107 @@
+/* Dashboard Styles */
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.balance-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-md);
+}
+
+.change-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+}
+
+.change-badge.positive {
+    background-color: rgb(16 185 129 / 0.1);
+    color: var(--color-success);
+}
+
+.change-badge.negative {
+    background-color: rgb(239 68 68 / 0.1);
+    color: var(--color-danger);
+}
+
+/* Charts */
+.chart-card {
+    min-height: 300px;
+}
+
+.chart-container {
+    margin-top: var(--spacing-md);
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+    margin-top: var(--spacing-md);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-bottom: 2px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.table td {
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.asset-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.symbol {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-body);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
