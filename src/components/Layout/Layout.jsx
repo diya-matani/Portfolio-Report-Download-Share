@@ -1,7 +1,13 @@
 import React from 'react';
 import { LayoutDashboard, PieChart, ArrowLeftRight, Settings, LogOut, Download } from 'lucide-react';
 
-export const Sidebar = () => {
+export const Sidebar = ({ activeTab, onTabChange }) => {
+    const menuItems = [
+        { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+        { id: 'portfolio', icon: PieChart, label: 'Portfolio' },
+        { id: 'activity', icon: ArrowLeftRight, label: 'Activity' },
+    ];
+
     return (
         <aside className="sidebar">
             <div className="logo">
@@ -10,29 +16,27 @@ export const Sidebar = () => {
             </div>
 
             <nav className="nav-menu">
-                <a href="#" className="nav-item active">
-                    <LayoutDashboard size={20} />
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" className="nav-item">
-                    <PieChart size={20} />
-                    <span>Portfolio</span>
-                </a>
-                <a href="#" className="nav-item">
-                    <ArrowLeftRight size={20} />
-                    <span>Activity</span>
-                </a>
+                {menuItems.map((item) => (
+                    <button
+                        key={item.id}
+                        className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
+                        onClick={() => onTabChange(item.id)}
+                    >
+                        <item.icon size={20} />
+                        <span>{item.label}</span>
+                    </button>
+                ))}
             </nav>
 
             <div className="nav-footer">
-                <a href="#" className="nav-item">
+                <button className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`} onClick={() => onTabChange('settings')}>
                     <Settings size={20} />
                     <span>Settings</span>
-                </a>
-                <a href="#" className="nav-item text-danger">
+                </button>
+                <button className="nav-item text-danger" onClick={() => alert("Logged out!")}>
                     <LogOut size={20} />
                     <span>Logout</span>
-                </a>
+                </button>
             </div>
         </aside>
     );
