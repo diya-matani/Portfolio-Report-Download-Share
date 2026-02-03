@@ -1,0 +1,366 @@
+:root {
+  /* Fintech Palette: Trustworthy Blues & Emeralds */
+  --primary: #0ea5e9;
+  /* Sky Blue */
+  --primary-hover: #0284c7;
+  --secondary: #10b981;
+  /* Emerald Green */
+  --accent: #f59e0b;
+  /* Amber for Gold/Assets */
+  --bg-dark: #0b1121;
+  /* Very Deep Blue/Black */
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --print-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 25%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.6s ease-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #fff 30%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p.subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.section-title {
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.form-group.full {
+  grid-column: span 2;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: white;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.input-prefix {
+  position: absolute;
+  left: 1rem;
+  top: 2.35rem;
+  color: var(--text-muted);
+  z-index: 10;
+}
+
+.has-prefix input {
+  padding-left: 2rem;
+}
+
+.btn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  background: linear-gradient(to right, var(--primary), var(--primary-hover));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Right Panel / Visibility */
+.chart-container {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+}
+
+.metric-card {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.success-msg {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--secondary);
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- REPORTS ENGINE CSS --- */
+/* This section renders the hidden PDF pages */
+.print-container {
+  position: absolute;
+  top: -10000px;
+  /* Hide off-screen */
+  left: 0;
+  width: 210mm;
+  /* A4 width */
+}
+
+/* Page Standard Size */
+.print-page {
+  width: 210mm;
+  height: 297mm;
+  background: white;
+  color: #1e293b;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page 1: Cover */
+.page-cover {
+  background: #0f172a;
+  /* Dark Blue Brand Cover */
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cover-logo {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.cover-title {
+  font-size: 1.5rem;
+  color: #94a3b8;
+  margin-bottom: 4rem;
+}
+
+.cover-client {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cover-date {
+  color: #64748b;
+}
+
+/* Page 2: Dashboard/Charts */
+.page-content {
+  padding: 20mm;
+}
+
+.print-header {
+  border-bottom: 2px solid #0ea5e9;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.print-h1 {
+  font-size: 24pt;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.print-sub {
+  color: #64748b;
+}
+
+.print-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.print-card {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.print-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.print-val {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.print-chart-box {
+  height: 300px;
+  width: 100%;
+  margin-bottom: 2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* Page 3: Text */
+.legal-text {
+  font-size: 9pt;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-top: auto;
+}
